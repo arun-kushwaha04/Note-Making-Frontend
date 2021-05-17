@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    font-size: 62.5%;
+    height: 100vh;
+    background: linear-gradient(45deg, #ff9ce3, #4ab3ff);
+    overflow: hidden;
+}
+
+#signUpNameHint {
+    visibility: visible;
+}
+
+#signUpEmailHint {
+    visibility: visible;
+}
+
+#signUpPasswordHint {
+    visibility: visible;
+}
+
+#signInEmailHint {
+    visibility: visible;
+}
+
+#signInPasswordHint {
+    visibility: visible;
+}
+
+.contaniner {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.signUp,
+.signIn {
+    padding: 5em;
+    text-align: center;
+    background: rgba( 255, 255, 255, 0.45);
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37);
+    backdrop-filter: blur( 0.0px);
+    -webkit-backdrop-filter: blur( 0.0px);
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18);
+}
+
+.signUp label,
+.signIn label {
+    margin: 1em 0;
+}
+
+.signUp .heading,
+.signIn .heading {
+    font-size: 2rem;
+    margin-bottom: 1em;
+    font-weight: 600;
+}
+
+.btn {
+    padding: 0.5em 1em;
+    border-radius: 1em;
+    font-size: 1rem;
+    color: #000;
+    background: rgba( 255, 255, 255, 0.15);
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37);
+    backdrop-filter: blur( 0.0px);
+    -webkit-backdrop-filter: blur( 0.0px);
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18);
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+.btn:hover {
+    letter-spacing: 0.1em;
+}
+
+.circle1,
+.circle2 {
+    position: absolute;
+    z-index: -1;
+}
+
+.circle1 {
+    height: 40rem;
+    width: 40rem;
+    border-radius: 50%;
+    background: linear-gradient(180deg, #27fcf8, #e1e34f);
+    transform: rotate(20deg);
+    filter: blur(0.7rem);
+    top: -12rem;
+    left: -10rem;
+}
+
+.circle2 {
+    height: 25rem;
+    width: 25rem;
+    border-radius: 50%;
+    background: linear-gradient(18deg, #a0b4d8, #a518c2);
+    transform: rotate(20deg);
+    filter: blur(0.5rem);
+    right: -5rem;
+    bottom: -2.5rem;
+}
