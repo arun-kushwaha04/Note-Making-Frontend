@@ -38,12 +38,16 @@ nav {
 }
 
 nav div {
-    padding: 0.2em 1em;
+    padding: 0.5em 1em;
     background-color: rgba(255, 255, 255, 0.45);
     border-radius: 1.3em;
     backdrop-filter: 0.5em;
     -webkit-backdrop-filter: 0.5em;
     cursor: pointer;
+}
+
+nav a {
+    text-decoration: none;
 }
 
 main {

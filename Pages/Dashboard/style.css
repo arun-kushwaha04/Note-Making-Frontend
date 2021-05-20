@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(45deg, #ff9ce3, #4ab3ff);
+    overflow-y: auto;
+    font-size: 10px;
+    opacity: 0;
+    transition: opacity 1s ease-in;
+}
+
+.visible {
+    opacity: 1;
+}
+
+nav {
+    height: 10vh;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 5em;
+}
+
+nav .nav-options div {
+    display: inline-block;
+    font-size: 1.2rem;
+    margin: 0.5em;
+    background-color: rgba(255, 255, 255, 0.267);
+    padding: 0.3em 0.7em;
+    border-radius: 1em;
+    cursor: pointer;
+}
+
+nav .heading {
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+
+/* scrollbar optimised */
+
+.main-container {
+    padding: 5em;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(25em, 1fr));
+    grid-column-gap: 5em;
+    grid-row-gap: 2.5em;
+    justify-content: center;
+}
+
+.card {
+    height: 30em;
+    width: 25em;
+    background-color: rgba(255, 251, 251, 0.267);
+    border-radius: 2em;
+    padding: 2em 1.5em;
+}
+
+.main-container .header {
+    height: 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.heading {
+    font-size: 1.2rem;
+    font-weight: bold;
+    word-break: break-word;
+}
+
+.img-div {
+    height: 3.5em;
+    width: 7em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.main-container a {
+    height: 100%;
+    width: 50%;
+}
+
+.main-container a img {
+    fill: #fff;
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+}
+
+.content {
+    height: 80%;
+    border: 1px solid white;
+    margin: 2em 0 0 0;
+    border-radius: 1em;
+    padding: 1em;
+    overflow-y: auto;
+    word-break: break-word;
+    font-size: 0.8rem;
+}
+
+nav .add-note,
+nav .sign-out {
+    transition: all 1sec ease-in-out;
+}
+
+nav .add-note:hover,
+nav .sign-out:hover {
+    transform: scale(1.1);
+}
+
+.noCard {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font: size 10rem;
+}

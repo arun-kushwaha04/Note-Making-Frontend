@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(45deg, #ff9ce3, #4ab3ff);
+    font-size: 10px;
+    overflow: hidden;
+}
+
+main {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.card {
+    height: 40em;
+    width: 30em;
+    text-align: center;
+    background-color: rgba(255, 251, 251, 0.267);
+    border-radius: 2em;
+    padding: 2em 1.5em;
+}
+
+.main-container .header {
+    height: 10%;
+}
+
+.main-container .header .heading {
+    color: rgb(255, 255, 255);
+    background-color: transparent;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-align: center;
+    padding: 0.5rem;
+    outline: none;
+    width: 100%;
+    border: 1px solid white;
+    border-radius: 0.5em;
+}
+
+.content {
+    height: 70%;
+    width: 100%;
+    text-align: center;
+    border: 1px solid white;
+    margin: 2em 0 0 0;
+    border-radius: 1em;
+    padding: 1em;
+    overflow-y: auto;
+    word-break: break-word;
+    font-size: 1.1rem;
+    outline: none;
+    background-color: transparent;
+    resize: none;
+}
+
+.add-note {
+    height: 10%;
+    display: inline-block;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    margin: 0.5em;
+    color: black;
+    background-color: rgba(255, 255, 255, 0.267);
+    padding: 0.3em 0.7em;
+    border-radius: 1em;
+    cursor: pointer;
+}
+
+.add-note {
+    transition: all 1sec ease-in-out;
+}
+
+.add-note:hover {
+    transform: scale(1.1);
+}
+
+.circle1,
+.circle2 {
+    position: absolute;
+    z-index: -1;
+}
+
+.circle1 {
+    height: 40rem;
+    width: 40rem;
+    border-radius: 50%;
+    background: linear-gradient(180deg, #27fcf8, #e1e34f);
+    transform: rotate(20deg);
+    filter: blur(0.7rem);
+    top: -12rem;
+    left: -10rem;
+}
+
+.circle2 {
+    height: 25rem;
+    width: 25rem;
+    border-radius: 50%;
+    background: linear-gradient(18deg, #a0b4d8, #a518c2);
+    transform: rotate(20deg);
+    filter: blur(0.5rem);
+    right: -5rem;
+    bottom: -2.5rem;
+}
