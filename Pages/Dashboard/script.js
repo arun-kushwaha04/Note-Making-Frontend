@@ -12,6 +12,8 @@ window.addEventListener('load', () => {
 
 const url = "http://localhost:8000";
 
+
+// fetching user notes from database
 fetch(`${url}/notes/getNotes`, {
         method: "GET",
         headers: {
@@ -21,7 +23,6 @@ fetch(`${url}/notes/getNotes`, {
     }).then(res =>
         res.json())
     .then(data => {
-        console.log(data.notes.length)
         heading.textContent = `Welcome ${data.name}`;
         if (data.notes.length == 0) {
             const card = document.createElement('div');
@@ -36,6 +37,8 @@ fetch(`${url}/notes/getNotes`, {
 function createNoteElement(note) {
     const card = document.createElement('div');
     card.classList.add('card');
-    card.innerHTML = `<div class="header"><div class="heading">${note.noteHeading[0]}</div><div class="img-div"><a><img src="../../assets/edit.svg" alt=""></a><a><img src="../../assets/delete.svg" alt=""></a></div></div><div class="content"><p>${note.noteContent[0]}</p></div>`
+    card.innerHTML = `<div class="header"><div class="heading">${note.noteHeading[0]}</div><div class="img-div"><a class="edit" href="../UpdateNote/index.html?noteId=${note.id}"><img src="../../assets/edit.svg" alt=""></a><a class="delete"><img src="../../assets/delete.svg" alt=""></a></div></div><div class="content"><p>${note.noteContent[0]}</p></div>`
+        // const href = `../UpdateNote/index.html?noteId=${note.id}`;
+        // console.log(href);
     mainContainer.appendChild(card);
 }

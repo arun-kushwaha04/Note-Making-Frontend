@@ -88,6 +88,7 @@ nav .heading {
 .main-container a {
     height: 100%;
     width: 50%;
+    text-decoration: none;
 }
 
 .main-container a img {
@@ -95,6 +96,30 @@ nav .heading {
     height: 100%;
     width: 100%;
     cursor: pointer;
+}
+
+.main-container .edit::after {
+    content: "Edit Note";
+    display: block;
+    font-size: 0.7rem;
+    width: 200%;
+    visibility: hidden;
+}
+
+.main-container .edit:hover::after {
+    visibility: visible;
+}
+
+.main-container .delete::after {
+    content: "Delete Note";
+    display: block;
+    font-size: 0.7rem;
+    width: 200%;
+    visibility: hidden;
+}
+
+.main-container .delete:hover::after {
+    visibility: visible;
 }
 
 .content {

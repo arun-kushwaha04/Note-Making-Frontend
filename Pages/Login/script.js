@@ -1,7 +1,6 @@
-window.addEventListener('unload', () => {
-    global.location.href += "#";
-})
-
+// window.addEventListener('unload', () => {
+//     global.location.href += "#";
+// })
 
 const signUpEmailHint = document.querySelector("#signUpEmailHint");
 const signUpEmail = document.querySelector(".signUpEmail");
@@ -104,16 +103,16 @@ const login = document.querySelector('.login');
 const register = document.querySelector('.register');
 
 login.addEventListener('click', (event) => {
-    event.preventDefault();
-    if (signInEmail.value == "") {
-        alert('Please Enter Register Email to Login');
-    } else if (signInPassword.value == "") {
-        alert('Please Enter Password to Login');
+    const form = document.querySelector('.login-form');
+    if (!form.checkValidity()) {
+        return;
     } else {
+        event.preventDefault();
         let userData = {
             "email": signInEmail.value,
             "password": signInPassword.value,
         }
+        console.log(userData);
         userData = JSON.stringify(userData);
         fetch(`${url}/auth/login`, {
                 method: "POST",
@@ -143,14 +142,13 @@ login.addEventListener('click', (event) => {
 
 });
 
-register.addEventListener('click', () => {
-    if (signUpName.value == "") {
-        alert('Please Enter Name');
-    } else if (signUpEmail.value == "") {
-        alert('Please Enter Email');
-    } else if (signUpPassword.value == "") {
-        alert('Please Enter Password');
+register.addEventListener('click', (event) => {
+    const form = document.querySelector('.register-form');
+    form.checkValidity();
+    if (!form.checkValidity()) {
+        return;
     } else {
+        event.preventDefault();
         let userData = {
             "name": signUpName.value,
             "email": signUpEmail.value,
