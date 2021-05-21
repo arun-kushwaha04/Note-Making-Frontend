@@ -1,15 +1,35 @@
-const heading = document.querySelector(".heading");
-const content = document.querySelector(".content");
+const noteHeading = document.querySelector(".heading");
+const noteContent = document.querySelector(".content");
 const button = document.querySelector(".add-note");
 
+const url = "http://localhost:8000";
+
+// Adding Note To Database
 button.addEventListener("click", () => {
-    if (heading.value === "" || content.value === "") {
+    if (noteHeading.value === "" || noteContent.value === "") {
         alert("Note Heading and Content can't be Empty");
-    }
-    if (heading.value.length > 15) {
+    } else if (noteHeading.value.length > 15) {
         alert("Note heading can't be more than 15");
-    }
-    if (content.value.length > 100) {
+    } else if (noteContent.value.length > 100) {
         alert("Note content can't be more than 100");
+    } else {
+        let data = {
+            noteHeading: noteHeading.value,
+            noteContent: noteContent.value,
+        }
+        data = JSON.stringify(data);
+        fetch(`${url}/notes/addNotes`, {
+                method: "POST",
+                body: data,
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `${localStorage.getItem("userToken")}`,
+                },
+            }).then(res => res.json())
+            .then(data => {
+                alert(data.message);
+                location.href = "../Dashboard/index.html";
+            })
+            .catch(err => alert("Internal Error Try Later"));
     }
 });

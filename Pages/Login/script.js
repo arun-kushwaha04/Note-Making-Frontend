@@ -126,7 +126,7 @@ login.addEventListener('click', (event) => {
                 if (data.userToken) {
                     localStorage.setItem("userToken", data.userToken);
                     alert(`${data.message}`);
-                    location.href = `${data.dashboardUrl}`;
+                    location.replace(`${data.dashboardUrl}`);
                 } else {
                     alert(`${data.message}`);
                 }

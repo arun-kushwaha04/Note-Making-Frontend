@@ -37,8 +37,45 @@ fetch(`${url}/notes/getNotes`, {
 function createNoteElement(note) {
     const card = document.createElement('div');
     card.classList.add('card');
-    card.innerHTML = `<div class="header"><div class="heading">${note.noteHeading[0]}</div><div class="img-div"><a class="edit" href="../UpdateNote/index.html?noteId=${note.id}"><img src="../../assets/edit.svg" alt=""></a><a class="delete"><img src="../../assets/delete.svg" alt=""></a></div></div><div class="content"><p>${note.noteContent[0]}</p></div>`
+    card.innerHTML = `<div class="header"><div class="heading">${note.noteHeading[0]}</div><div class="img-div"><a class="edit" href="../UpdateNote/index.html?noteId=${note.id}"><img src="../../assets/edit.svg" alt=""></a><a class="delete" id="${note.id}" onClick="noteDelete(this.id)"><img src="../../assets/delete.svg" alt=""></a></div></div><div class="content"><p>${note.noteContent[0]}</p></div>`
         // const href = `../UpdateNote/index.html?noteId=${note.id}`;
         // console.log(href);
     mainContainer.appendChild(card);
 }
+
+//deleting Notes
+function noteDelete(noteId) {
+    const id = noteId;
+    let data = {
+        id
+    }
+    data = JSON.stringify(data);
+    fetch(`${url}/notes/deleteNote`, {
+            method: 'DELETE',
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `${localStorage.getItem("userToken")}`,
+            },
+            body: data,
+        }).then(res =>
+            res.json())
+        .then(data => {
+            alert(data.message);
+            location.reload();
+        })
+        .catch(err => console.log(err))
+}
+
+//Adding New notes
+const addNote = document.querySelector(".add-note");
+addNote.addEventListener("click", () => {
+    location.href = "../AddNote/index.html";
+});
+
+// Siging Out The User
+const signOut = document.querySelector(".sign-out");
+signOut.addEventListener("click", () => {
+    localStorage.removeItem("userToken");
+    alert("Signed Out Successfully");
+    location.replace("../../index.html");
+})
