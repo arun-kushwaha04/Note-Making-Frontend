@@ -48,17 +48,19 @@ const url = "http://localhost:8000";
 
 button.addEventListener('click', () => {
     console.log("Hi");
-    if (password.value === "") {
-        password.style.borderColor = '#e74c3c';
-        passwordIcon1.style.display = 'block';
-        passwordIcon2.style.display = 'none';
-        enterPassword.style.display = 'block';
-    }
     if (email.value === "") {
         email.style.borderColor = '#e74c3c';
         emailIcon1.style.display = 'block';
         emailIcon2.style.display = 'none';
         emailError.style.display = 'block';
+        return;
+    }
+    if (password.value === "") {
+        password.style.borderColor = '#e74c3c';
+        passwordIcon1.style.display = 'block';
+        passwordIcon2.style.display = 'none';
+        enterPassword.style.display = 'block';
+        return;
     }
     let data = {
         "email": `${email.value}`,
@@ -82,7 +84,7 @@ button.addEventListener('click', () => {
             emailIcon2.style.display = 'none';
             emailError.style.display = 'none';
             emailExists.style.display = 'block';
-        } else if (data.message === "Invalid password") {
+        } else if (data.message === "Invalid Password") {
             password.style.borderColor = '#e74c3c';
             passwordIcon1.style.display = 'block';
             passwordIcon2.style.display = 'none';
