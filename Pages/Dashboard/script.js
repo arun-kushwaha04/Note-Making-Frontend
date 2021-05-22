@@ -24,6 +24,7 @@ fetch(`${url}/notes/getNotes`, {
         res.json())
     .then(data => {
         heading.textContent = `Welcome ${data.name}`;
+        localStorage.setItem("notes", data.notes.length);
         if (data.notes.length == 0) {
             const card = document.createElement('div');
             card.classList.add('noCard');
@@ -65,6 +66,12 @@ function noteDelete(noteId) {
         })
         .catch(err => console.log(err))
 }
+
+//User profile
+const profile = document.querySelector('.profile');
+profile.addEventListener("click", () => {
+    location.href = "../UserProfile/index.html";
+});
 
 //Adding New notes
 const addNote = document.querySelector(".add-note");

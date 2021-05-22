@@ -134,12 +134,14 @@ nav .heading {
 }
 
 nav .add-note,
-nav .sign-out {
+nav .sign-out,
+nav .profile {
     transition: all 1sec ease-in-out;
 }
 
 nav .add-note:hover,
-nav .sign-out:hover {
+nav .sign-out:hover,
+nav .profile:hover {
     transform: scale(1.1);
 }
 
