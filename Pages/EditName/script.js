@@ -5,7 +5,6 @@ const emailIcon2 = document.querySelector('.email-icon2');
 const passwordIcon1 = document.querySelector('.password-icon1');
 const passwordIcon2 = document.querySelector('.password-icon2');
 const emailError = document.querySelector('.email-error');
-const emailExists = document.querySelector('.email-exists');
 const passwordError = document.querySelector('.password-error');
 const enterPassword = document.querySelector('.error-text');
 const button = document.querySelector('.btn');
@@ -18,13 +17,11 @@ function check() {
         emailIcon1.style.display = 'none';
         emailIcon2.style.display = 'block';
         emailError.style.display = 'none';
-        emailExists.style.display = 'none';
     } else {
         email.style.borderColor = '#e74c3c';
         emailIcon1.style.display = 'block';
         emailIcon2.style.display = 'none';
         emailError.style.display = 'block';
-        emailExists.style.display = 'none';
     }
     if (email.value === "") {
         email.style.borderColor = 'lightgray';
@@ -76,13 +73,7 @@ button.addEventListener('click', () => {
         res.json()
     ).then(data => {
         console.log(data);
-        if (data.message === "Email Already Exists") {
-            email.style.borderColor = '#e74c3c';
-            emailIcon1.style.display = 'block';
-            emailIcon2.style.display = 'none';
-            emailError.style.display = 'none';
-            emailExists.style.display = 'block';
-        } else if (data.message === "Invalid password") {
+        if (data.message === "Invalid password") {
             password.style.borderColor = '#e74c3c';
             passwordIcon1.style.display = 'block';
             passwordIcon2.style.display = 'none';
@@ -90,8 +81,7 @@ button.addEventListener('click', () => {
             enterPassword.style.display = 'none';
             return;
         } else {
-            console.log(data.token);
-            localStorage.setItem('userToken', data.userToken);
+            localStorage.setItem('userToken', data.token);
             alert('Email Updated Success');
         }
 

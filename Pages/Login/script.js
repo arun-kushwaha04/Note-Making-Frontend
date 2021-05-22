@@ -163,17 +163,8 @@ register.addEventListener('click', (event) => {
                 },
             }).then(res => res.json())
             .then(data => {
-                console.log(data);
-                if (data.userToken) {
-                    localStorage.setItem("userToken", data.userToken);
-                    alert(`${data.message}`);
-                    location.href = `${data.dashboardUrl}`;
-                } else {
-                    alert(`${data.message}`);
-                }
-                signUpName.value = "";
-                signUpEmail.value = "";
-                signUpPassword.value = "";
+                alert(`${data.message}`);
+                location.reload();
             })
             .catch(err => {
                 console.log(err);
