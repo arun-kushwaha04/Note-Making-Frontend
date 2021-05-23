@@ -189,18 +189,24 @@ function check6() {
 }
 
 
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 // Connecting to backend
 
 //setting url for login
 const url = "http://localhost:8000";
-
+const loading = document.querySelector('.loading');
+const text = document.querySelector('.text');
+const img = document.querySelector('img');
 
 login.addEventListener('click', (event) => {
     if (chk5 === 0) {
         signinEmailError.style.display = 'block';
         return;
     }
+    loading.style.display = 'block';
     let userData = {
         "email": signInEmail.value,
         "password": signInPassword.value,
@@ -221,24 +227,36 @@ login.addEventListener('click', (event) => {
                 signInPasswordIcon2.style.display = 'none';
                 signinPasswordError.style.display = 'none';
                 signinPasswordIncorrect.style.display = 'block';
+                loading.style.display = 'none';
             } else if (data.message === "No Such User Exists Try Registering Yourself") {
                 signInEmail.style.borderColor = '#e74c3c';
                 signInEmailIcon1.style.display = 'block';
                 signInEmailIcon2.style.display = 'none';
                 signinEmailError.style.display = 'none';
                 signinEmailExists.style.display = 'block';
+                loading.style.display = 'none';
             } else if (data.userToken) {
                 localStorage.setItem("userToken", data.userToken);
-                alert(`${data.message}`);
-                location.replace(`${data.dashboardUrl}`);
+                text.textContent = data.message;
+                img.src = "../../assets/success.png";
+                img.style.width = "20rem";
+                img.style.height = "20rem";
+                setTimeout(() => { location.replace(`${data.dashboardUrl}`); }, 1000);
             } else {
-                alert(`${data.message}`);
+                text.textContent = 'Internal Error Try Again';
+                img.src = "../../assets/error.webp";
+                img.style.width = "30rem";
+                img.style.height = "30rem";
+                setTimeout(() => { location.reload(); }, 5000);
             }
-
         })
         .catch(err => {
             console.log(err);
-            alert('An Internal Error Occured Try Again!');
+            text.textContent = 'Server Down';
+            img.src = "../../assets/error.webp";
+            img.style.width = "30rem";
+            img.style.height = "30rem";
+            setTimeout(() => { location.reload(); }, 5000);
         })
 });
 
@@ -269,13 +287,20 @@ register.addEventListener('click', (event) => {
                 emailError.style.display = 'none';
                 emailExists.style.display = 'block';
             } else {
-                alert(`${data.message}`);
-                location.reload();
+                text.textContent = data.message;
+                img.src = "../../assets/success.png";
+                img.style.width = "20rem";
+                img.style.height = "20rem";
+                setTimeout(() => { location.reload(); }, 1000);
             }
         })
         .catch(err => {
             console.log(err);
-            alert('An Internal Error Occured Try Again!');
+            text.textContent = 'Server Down';
+            img.src = "../../assets/error.webp";
+            img.style.width = "30rem";
+            img.style.height = "30rem";
+            setTimeout(() => { location.reload(); }, 5000);
         })
 
 })
