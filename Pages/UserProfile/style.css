@@ -81,11 +81,15 @@ main {
 }
 
 .password {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.password a {
     font-size: 1.5rem;
     text-align: center;
     margin-top: 1rem;
     color: rgb(57, 60, 230);
-    margin-bottom: 1rem;
     cursor: pointer;
     transition: transform 0.5s ease-in-out;
 }

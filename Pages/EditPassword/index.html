@@ -8,23 +8,31 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer"
     />
     <link rel="stylesheet" href="style.css">
-    <title>Update Name</title>
+    <title>Update Password</title>
 </head>
 
 <body>
 
     <div class="container">
-        <div class="heading">Update Name</div>
+        <div class="heading">Change Password</div>
         <div class="form">
             <div class="field">
-                <div class="name-field">
-                    <input class="name" type="text" placeholder="Enter Name" onkeyup="check()">
+                <div class="newPassword-field">
+                    <input class="newPassword" type="password" placeholder="New Password" onkeyup="check()">
                     <div class="icon">
-                        <span class="name-icon1 fas fa-exclamation"></span>
-                        <span class="name-icon2 fas fa-check"></span>
+                        <span class="newPassword-icon1 fas fa-exclamation"></span>
+                        <span class="newPassword-icon2 fas fa-check"></span>
                     </div>
                 </div>
-                <div class="name-error">Name Should At Max 20 Characters</div>
+                <div class="newPassword-error">Atleast 8 Characters Including Uppercase, Lowercase, Numbers And Symbols</div>
+                <div class="confirmPassword-field">
+                    <input class="confirmPassword" type="password" placeholder="Confirm Password" onkeyup="check3()">
+                    <div class="icon">
+                        <span class="confirmPassword-icon1 fas fa-exclamation"></span>
+                        <span class="confirmPassword-icon2 fas fa-check"></span>
+                    </div>
+                </div>
+                <div class="confirmPassword-error">Confirm Password And New Password Should Match</div>
                 <div class="password-field">
                     <input type="password" placeholder="Current Password" class="password" onkeyup="check2()">
                     <div class="icon">
