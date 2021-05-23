@@ -5,10 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer"
     />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="style.css">
     <title>Authentication</title>
 </head>
@@ -17,82 +15,68 @@
     <div class="contaniner">
         <div class="signUp">
             <div class="heading">Sign Up</div>
-            <form class="register-form">
-                <div>
-                    <label class="mdc-text-field mdc-text-field--outlined">
-                    <span class="mdc-notched-outline">
-                      <span class="mdc-notched-outline__leading"></span>
-                      <span class="mdc-notched-outline__notch">
-                        <span class="mdc-floating-label" id="signUpNameHint">Name</span>
-                      </span>
-                      <span class="mdc-notched-outline__trailing"></span>
-                    </span>
-                    <input type="text" class="mdc-text-field__input signUpName" aria-labelledby="my-label-id" required="required">
-                  </label>
+            <div class="form">
+                <div class="name-field">
+                    <input class="name" type="text" placeholder="Name" onkeyup="check1()">
+                    <div class="icon">
+                        <span class="name-icon1 fas fa-exclamation"></span>
+                        <span class="name-icon2 fas fa-check"></span>
+                    </div>
                 </div>
-                <div>
-                    <label class="mdc-text-field mdc-text-field--outlined">
-                    <span class="mdc-notched-outline">
-                      <span class="mdc-notched-outline__leading"></span>
-                      <span class="mdc-notched-outline__notch">
-                        <span class="mdc-floating-label" id="signUpEmailHint">Email</span>
-                      </span>
-                      <span class="mdc-notched-outline__trailing"></span>
-                    </span>
-                    <input type="email" class="mdc-text-field__input signUpEmail" aria-labelledby="my-label-id" required="required">
-                  </label>
+                <div class="name-error">Name Should At Max 20 Characters</div>
+                <div class="email-field">
+                    <input class="signup-email" type="text" placeholder="Email" onkeyup="check2()">
+                    <div class="icon">
+                        <span class="signup-email-icon1 email-icon1 fas fa-exclamation"></span>
+                        <span class="signup-email-icon2 email-icon2 fas fa-check"></span>
+                    </div>
                 </div>
-                <div class="">
-                    <label class="mdc-text-field mdc-text-field--outlined">
-                    <span class="mdc-notched-outline">
-                      <span class="mdc-notched-outline__leading"></span>
-                      <span class="mdc-notched-outline__notch">
-                        <span class="mdc-floating-label" id="signUpPasswordHint">Password</span>
-                      </span>
-                      <span class="mdc-notched-outline__trailing"></span>
-                    </span>
-                    <input type="password" class="mdc-text-field__input signUpPassword" aria-labelledby="my-label-id" required="required">
-                  </label>
+                <div class="signup-email-error email-error">Please Enter Valid Email</div>
+                <div class="signup-email-exists email-error">Email Already Registered</div>
+                <div class="password-field">
+                    <input type="password" placeholder="Password" class="signup-password" onkeyup="check3()">
+                    <div class="icon">
+                        <span class="signup-password-icon1 password-icon1 fas fa-exclamation"></span>
+                        <span class="signup-password-icon2 password-icon2 fas fa-check"></span>
+                    </div>
                 </div>
+                <div class="signup-enter-password password-error">Atleast 8 Characters Including Uppercase, Lowercase, Numbers And Symbols</div>
 
-                <div class="button">
-                    <input type="submit" class="btn register" value="REGISTER">
+                <div class="confirmPassword-field">
+                    <input class="confirmPassword" type="password" placeholder="Confirm Password" onkeyup="check4()">
+                    <div class="icon">
+                        <span class="confirmPassword-icon1 fas fa-exclamation"></span>
+                        <span class="confirmPassword-icon2 fas fa-check"></span>
+                    </div>
                 </div>
-            </form>
-
+                <div class="confirm-password-error password-error">Confirm Password And New Password Should Match</div>
+            </div>
+            <div class="btn register">REGISTER</div>
         </div>
+
         <div class="signIn">
             <div class="heading">Sign In</div>
-            <form class="login-form">
-                <div>
-                    <label class="mdc-text-field mdc-text-field--outlined">
-                    <span class="mdc-notched-outline">
-                      <span class="mdc-notched-outline__leading"></span>
-                      <span class="mdc-notched-outline__notch">
-                        <span class="mdc-floating-label" id="signInEmailHint">Registered Email</span>
-                      </span>
-                      <span class="mdc-notched-outline__trailing"></span>
-                    </span>
-                    <input type="email" class="mdc-text-field__input signInEmail" aria-labelledby="my-label-id" required="required">
-                  </label>
+            <div class="login-form">
+                <div class="email-field">
+                    <input class="signin-email" type="text" placeholder="Email" onkeyup="check6()">
+                    <div class="icon">
+                        <span class="signin-email-icon1 email-icon1 fas fa-exclamation"></span>
+                        <span class="signin-email-icon2 email-icon2 fas fa-check"></span>
+                    </div>
                 </div>
-                <div class="">
-                    <label class="mdc-text-field mdc-text-field--outlined">
-                    <span class="mdc-notched-outline">
-                      <span class="mdc-notched-outline__leading"></span>
-                      <span class="mdc-notched-outline__notch">
-                        <span class="mdc-floating-label" id="signInPasswordHint">Password</span>
-                      </span>
-                      <span class="mdc-notched-outline__trailing"></span>
-                    </span>
-                    <input type="password" class="mdc-text-field__input signInPassword" aria-labelledby="my-label-id" required="required">
-                  </label>
+                <div class="signin-email-error email-error">Please Enter Valid Email</div>
+                <div class="signin-email-exists email-error">No Such Email Registered</div>
+                <div class="password-field">
+                    <input type="password" placeholder="Password" class="signin-password" onkeyup="check5()">
+                    <div class="icon">
+                        <span class="signin-password-icon1 password-icon1 fas fa-exclamation"></span>
+                        <span class="signin-password-icon2 password-icon2 fas fa-check"></span>
+                    </div>
                 </div>
-
-                <div class="button">
-                    <input type="submit" class="btn login" value="LOGIN">
-                </div>
-            </form>
+                <div class="signin-password-incorrect password-error">Password Incorrect</div>
+                <div class="signin-enter-password password-error">Enter Password</div>
+                <div class="btn login">LOGIN</div>
+            </div>
         </div>
 
         <div class="circle1"></div>

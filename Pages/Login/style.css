@@ -13,7 +13,8 @@ body {
     overflow: hidden;
 }
 
-#signUpNameHint {
+
+/* #signUpNameHint {
     visibility: visible;
 }
 
@@ -31,7 +32,7 @@ body {
 
 #signInPasswordHint {
     visibility: visible;
-}
+} */
 
 .contaniner {
     height: 100%;
@@ -53,9 +54,105 @@ body {
     border: 1px solid rgba( 255, 255, 255, 0.18);
 }
 
-.signUp label,
-.signIn label {
-    margin: 1em 0;
+.signUp {
+    width: 35%;
+}
+
+.signIn {
+    width: 30%;
+}
+
+.email-field,
+.password-field,
+.name-field,
+.confirmPassword-field {
+    width: 100%;
+    height: 3rem;
+    margin-top: 2rem;
+    display: flex;
+    position: relative;
+}
+
+.email-field input,
+.password-field input,
+.name-field input,
+.confirmPassword-field input {
+    width: 100%;
+    height: 100%;
+    border: 1px solid lightgray;
+    border-radius: 0.5em;
+    padding-left: 1rem;
+    font-size: 1.3rem;
+    outline: none;
+    text-align: center;
+}
+
+.email-field .icon,
+.password-field .icon,
+.name-field .icon,
+.confirmPassword-field .icon {
+    position: absolute;
+    top: 50%;
+    right: 0.5rem;
+    transform: translateY(-50%);
+}
+
+.email-field .icon span,
+.password-field .icon span,
+.name-field .icon span,
+.confirmPassword-field .icon span {
+    height: 2rem;
+    width: 2rem;
+    border: 0.2rem solid;
+    border-radius: 50%;
+    line-height: 1.7rem;
+    font-size: 1rem;
+    display: none;
+}
+
+.email-field .icon .email-icon1,
+.password-field .icon .password-icon1,
+.name-field .icon .name-icon1,
+.confirmPassword-field .icon .confirmPassword-icon1 {
+    color: #e74c3c;
+    border-color: #e74c3c;
+}
+
+.email-field .icon .email-icon2,
+.password-field .icon .password-icon2,
+.name-field .icon .name-icon2,
+.confirmPassword-field .icon .confirmPassword-icon2 {
+    color: #27ae60;
+    border-color: #27ae60;
+}
+
+.email-error,
+.password-error,
+.name-error,
+.confirmPassword-error {
+    margin: 1rem 0 2rem 0;
+    background-color: #e74c3c;
+    padding: 0.5em;
+    border-radius: 0.5em;
+    position: relative;
+    display: none;
+    font-size: 1rem;
+}
+
+.email-error:before,
+.password-error:before,
+.name-error:before,
+.confirmPassword-error:before {
+    display: block;
+    content: " ";
+    background-color: #e74c3c;
+    height: 1rem;
+    width: 1rem;
+    position: absolute;
+    top: -0.5rem;
+    right: 0.69rem;
+    transform: rotate(45deg);
+    z-index: -1;
 }
 
 .signUp .heading,
@@ -66,18 +163,22 @@ body {
 }
 
 .btn {
-    padding: 0.5em 1em;
-    border-radius: 1em;
-    font-size: 1rem;
-    color: #000;
-    background: rgba( 255, 255, 255, 0.15);
-    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37);
-    backdrop-filter: blur( 0.0px);
-    -webkit-backdrop-filter: blur( 0.0px);
-    border-radius: 10px;
-    border: 1px solid rgba( 255, 255, 255, 0.18);
-    cursor: pointer;
+    font-size: 1.5rem;
+    padding: 0.2em;
     margin-top: 1rem;
+    background-color: #27ae60;
+    width: 100%;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: #F2F2F2;
+    border-radius: 0.5em;
+    display: none;
+    /* display: 'none'; */
+}
+
+.login {
+    display: block;
 }
 
 .btn:hover {

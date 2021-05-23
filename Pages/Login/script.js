@@ -2,96 +2,192 @@
 //     global.location.href += "#";
 // })
 
-const signUpEmailHint = document.querySelector("#signUpEmailHint");
-const signUpEmail = document.querySelector(".signUpEmail");
-const signUpPasswordHint = document.querySelector("#signUpPasswordHint");
-const signUpPassword = document.querySelector(".signUpPassword")
-const signUpNameHint = document.querySelector("#signUpNameHint");
-const signUpName = document.querySelector(".signUpName")
-const signInEmailHint = document.querySelector("#signInEmailHint");
-const signInEmail = document.querySelector(".signInEmail");
-const signInPasswordHint = document.querySelector("#signInPasswordHint");
-const signInPassword = document.querySelector(".signInPassword")
-const container = document.querySelector(".container");
+//Selecting all input tags 
+const signUpEmail = document.querySelector(".signup-email");
+const signUpPassword = document.querySelector(".signup-password")
+const signUpName = document.querySelector(".name")
+const confirmPassword = document.querySelector('.confirmPassword')
+const signInEmail = document.querySelector(".signin-email");
+const signInPassword = document.querySelector(".signin-password");
+
+//selecting all icons
+const signUpEmailIcon1 = document.querySelector('.signup-email-icon1');
+const signUpEmailIcon2 = document.querySelector('.signup-email-icon2');
+const signInEmailIcon1 = document.querySelector('.signin-email-icon1');
+const signInEmailIcon2 = document.querySelector('.signin-email-icon2');
+const nameIcon1 = document.querySelector('.name-icon1');
+const nameIcon2 = document.querySelector('.name-icon2');
+const confirmPasswordIcon1 = document.querySelector('.confirmPassword-icon1');
+const confirmPasswordIcon2 = document.querySelector('.confirmPassword-icon2');
+const signUpPasswordIcon1 = document.querySelector('.signup-password-icon1');
+const signUpPasswordIcon2 = document.querySelector('.signup-password-icon2');
+const signInPasswordIcon1 = document.querySelector('.signin-password-icon1');
+const signInPasswordIcon2 = document.querySelector('.signin-password-icon2');
+
+//selecting all error
+const emailError = document.querySelector('.signup-email-error');
+const emailExists = document.querySelector('.signup-email-exists');
+const nameError = document.querySelector('.name-error');
+const signUpPasswordError = document.querySelector('.signup-enter-password');
+const confirmPasswordError = document.querySelector('.confirm-password-error');
+const signinEmailError = document.querySelector('.signin-email-error');
+const signinEmailExists = document.querySelector('.signin-email-exists');
+const signinPasswordError = document.querySelector('.signin-enter-password');
+const signinPasswordIncorrect = document.querySelector('.signin-password-incorrect');
+
+const login = document.querySelector('.login');
+const register = document.querySelector('.register');
 
 
-// hovering and filling of text field
-signUpName.addEventListener('click', () => {
-    signUpNameHint.style.visibility = 'hidden'
-})
-signUpName.addEventListener('focus', () => {
-    signUpNameHint.style.visibility = 'hidden'
-})
+//handling all error cases
+let reg = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+let strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
 
-signUpName.addEventListener('focusout', () => {
-    if (signUpName.value === "") {
-        signUpNameHint.style.visibility = 'initial'
+let chk1 = 0,
+    chk2 = 0,
+    chk3 = 0,
+    chk4 = 0,
+    chk5 = 0;
+
+function check1() {
+    if (signUpName.value.length <= 20) {
+        signUpName.style.borderColor = '#27ae60';
+        nameIcon1.style.display = 'none';
+        nameIcon2.style.display = 'block';
+        nameError.style.display = 'none';
+        chk1 = 1;
     } else {
-        let name = signUpName.value;
-        name.toLowerCase();
-        name = name.charAt(0).toUpperCase() + name.slice(1);
-        if (name.length <= 20) {
-            signUpName.value = name;
-        } else {
-            alert('Name Should Have Max 20 Characters')
-            signUpName.value = "";
-            signUpNameHint.style.visibility = 'initial'
-        }
+        signUpName.style.borderColor = '#e74c3c';
+        nameIcon1.style.display = 'block';
+        nameIcon2.style.display = 'none';
+        nameError.style.display = 'block';
+        chk1 = 0;
     }
-})
-signUpEmail.addEventListener('click', () => {
-    signUpEmailHint.style.visibility = 'hidden';
-})
-signUpEmail.addEventListener('focus', () => {
-    signUpEmailHint.style.visibility = 'hidden';
-})
+    if (signUpName.value === "") {
+        signUpName.style.borderColor = 'lightgray';
+        nameIcon1.style.display = 'none';
+        nameIcon2.style.display = 'none';
+        nameError.style.display = 'none';
+        chk1 = 0;
+    }
+    if (chk1 === 1 && chk2 === 1 && chk3 === 1 && chk4 === 1) register.style.display = 'block';
+    else register.style.display = 'none';
+}
 
-signUpPassword.addEventListener('click', () => {
-    signUpPasswordHint.style.visibility = 'hidden';
-})
-signUpPassword.addEventListener('focus', () => {
-    signUpPasswordHint.style.visibility = 'hidden';
-})
-
-signUpEmail.addEventListener('focusout', () => {
+function check2() {
+    if (signUpEmail.value.match(reg)) {
+        signUpEmail.style.borderColor = '#27ae60';
+        signUpEmailIcon1.style.display = 'none';
+        signUpEmailIcon2.style.display = 'block';
+        emailError.style.display = 'none';
+        emailExists.style.display = 'none';
+        chk2 = 1;
+    } else {
+        signUpEmail.style.borderColor = '#e74c3c';
+        signUpEmailIcon1.style.display = 'block';
+        signUpEmailIcon2.style.display = 'none';
+        emailError.style.display = 'block';
+        emailExists.style.display = 'none';
+        chk2 = 0;
+    }
     if (signUpEmail.value === "") {
-        signUpEmailHint.style.visibility = 'initial';
+        signUpEmail.style.borderColor = 'lightgray';
+        signUpEmailIcon1.style.display = 'none';
+        signUpEmailIcon2.style.display = 'none';
+        emailError.style.display = 'none';
+        emailExists.style.display = 'none';
+        chk2 = 0;
     }
-})
+    if (chk1 === 1 && chk2 === 1 && chk3 === 1 && chk4 === 1) register.style.display = 'block';
+    else register.style.display = 'none';
+}
 
-signUpPassword.addEventListener('focusout', () => {
+function check3() {
+    if (signUpPassword.value.match(strongRegex)) {
+        signUpPassword.style.borderColor = '#27ae60';
+        signUpPasswordIcon1.style.display = 'none';
+        signUpPasswordIcon2.style.display = 'block';
+        signUpPasswordError.style.display = 'none';
+        chk3 = 1;
+    } else {
+        signUpPassword.style.borderColor = '#e74c3c';
+        signUpPasswordIcon1.style.display = 'block';
+        signUpPasswordIcon2.style.display = 'none';
+        signUpPasswordError.style.display = 'block';
+        chk3 = 0;
+    }
     if (signUpPassword.value === "") {
-        signUpPasswordHint.style.visibility = 'initial';
+        signUpPassword.style.borderColor = 'lightgray';
+        signUpPasswordIcon1.style.display = 'none';
+        signUpPasswordIcon2.style.display = 'none';
+        signUpPasswordError.style.display = 'none';
+        chk3 = 0;
     }
-})
+    if (chk1 === 1 && chk2 === 1 && chk3 === 1 && chk4 === 1) register.style.display = 'block';
+    else register.style.display = 'none';
+}
 
-signInEmail.addEventListener('click', () => {
-    signInEmailHint.style.visibility = 'hidden';
-})
+function check4() {
+    if (confirmPassword.value === signUpPassword.value) {
+        confirmPassword.style.borderColor = '#27ae60';
+        confirmPasswordIcon1.style.display = 'none';
+        confirmPasswordIcon2.style.display = 'block';
+        confirmPasswordError.style.display = 'none';
+        chk4 = 1;
+    } else {
+        confirmPassword.style.borderColor = '#e74c3c';
+        confirmPasswordIcon1.style.display = 'block';
+        confirmPasswordIcon2.style.display = 'none';
+        confirmPasswordError.style.display = 'block';
+        chk4 = 0;
+    }
+    if (confirmPassword.value === "") {
+        confirmPassword.style.borderColor = 'lightgray';
+        confirmPasswordIcon1.style.display = 'none';
+        confirmPasswordIcon2.style.display = 'none';
+        confirmPasswordError.style.display = 'none';
+        chk4 = 0;
+    }
+    if (chk1 === 1 && chk2 === 1 && chk3 === 1 && chk4 === 1) register.style.display = 'block';
+    else register.style.display = 'none';
+}
 
-signInPassword.addEventListener('click', () => {
-    signInPasswordHint.style.visibility = 'hidden';
-})
+function check5() {
+    if (signInPassword.value !== "") {
+        signInPassword.style.borderColor = 'lightgray';
+        signInPasswordIcon1.style.display = 'none';
+        signInPasswordIcon2.style.display = 'none';
+        signinPasswordError.style.display = 'none';
+        signinPasswordIncorrect.style.display = 'none';
+    }
+}
 
-signInEmail.addEventListener('focus', () => {
-    signInEmailHint.style.visibility = 'hidden';
-})
-
-signInPassword.addEventListener('focus', () => {
-    signInPasswordHint.style.visibility = 'hidden';
-})
-
-signInEmail.addEventListener('focusout', () => {
+function check6() {
+    if (signInEmail.value.match(reg)) {
+        signInEmail.style.borderColor = '#27ae60';
+        signInEmailIcon1.style.display = 'none';
+        signInEmailIcon2.style.display = 'block';
+        signinEmailError.style.display = 'none';
+        signinEmailExists.style.display = 'none';
+        chk5 = 1;
+    } else {
+        signInEmail.style.borderColor = '#e74c3c';
+        signInEmailIcon1.style.display = 'block';
+        signInEmailIcon2.style.display = 'none';
+        signinEmailError.style.display = 'block';
+        signinEmailExists.style.display = 'none';
+        chk5 = 0;
+    }
     if (signInEmail.value === "") {
-        signInEmailHint.style.visibility = 'initial';
+        signInEmail.style.borderColor = 'lightgray';
+        signInEmailIcon1.style.display = 'none';
+        signInEmailIcon2.style.display = 'none';
+        signinEmailError.style.display = 'none';
+        signinEmailExists.style.display = 'none';
+        chk5 = 0;
     }
-})
+}
 
-signInPassword.addEventListener('focusout', () => {
-    if (signInPassword.value === "") {
-        signInPasswordHint.style.visibility = 'initial';
-    }
-});
 
 
 // Connecting to backend
@@ -99,76 +195,87 @@ signInPassword.addEventListener('focusout', () => {
 //setting url for login
 const url = "http://localhost:8000";
 
-const login = document.querySelector('.login');
-const register = document.querySelector('.register');
 
 login.addEventListener('click', (event) => {
-    const form = document.querySelector('.login-form');
-    if (!form.checkValidity()) {
+    if (chk5 === 0) {
+        signinEmailError.style.display = 'block';
         return;
-    } else {
-        event.preventDefault();
-        let userData = {
-            "email": signInEmail.value,
-            "password": signInPassword.value,
-        }
-        console.log(userData);
-        userData = JSON.stringify(userData);
-        fetch(`${url}/auth/login`, {
-                method: "POST",
-                body: userData,
-                headers: {
-                    "Content-Type": "application/json",
-                },
-            }).then(res => res.json())
-            .then(data => {
-                console.log(data);
-                if (data.userToken) {
-                    localStorage.setItem("userToken", data.userToken);
-                    alert(`${data.message}`);
-                    location.replace(`${data.dashboardUrl}`);
-                } else {
-                    alert(`${data.message}`);
-                }
-                signUpName.value = "";
-                signUpEmail.value = "";
-                signUpPassword.value = "";
-            })
-            .catch(err => {
-                console.log(err);
-                alert('An Internal Error Occured Try Again!');
-            })
     }
+    let userData = {
+        "email": signInEmail.value,
+        "password": signInPassword.value,
+    }
+    console.log(userData);
+    userData = JSON.stringify(userData);
+    fetch(`${url}/auth/login`, {
+            method: "POST",
+            body: userData,
+            headers: {
+                "Content-Type": "application/json",
+            },
+        }).then(res => res.json())
+        .then(data => {
+            if (data.message === "Invalid Password") {
+                signInPassword.style.borderColor = '#e74c3c';
+                signInPasswordIcon1.style.display = 'block';
+                signInPasswordIcon2.style.display = 'none';
+                signinPasswordError.style.display = 'none';
+                signinPasswordIncorrect.style.display = 'block';
+            } else if (data.message === "No Such User Exists Try Registering Yourself") {
+                signInEmail.style.borderColor = '#e74c3c';
+                signInEmailIcon1.style.display = 'block';
+                signInEmailIcon2.style.display = 'none';
+                signinEmailError.style.display = 'none';
+                signinEmailExists.style.display = 'block';
+            } else if (data.userToken) {
+                localStorage.setItem("userToken", data.userToken);
+                alert(`${data.message}`);
+                location.replace(`${data.dashboardUrl}`);
+            } else {
+                alert(`${data.message}`);
+            }
 
+        })
+        .catch(err => {
+            console.log(err);
+            alert('An Internal Error Occured Try Again!');
+        })
 });
 
 register.addEventListener('click', (event) => {
-    const form = document.querySelector('.register-form');
-    form.checkValidity();
-    if (!form.checkValidity()) {
-        return;
-    } else {
-        event.preventDefault();
-        let userData = {
-            "name": signUpName.value,
-            "email": signUpEmail.value,
-            "password": signUpPassword.value,
-        }
-        userData = JSON.stringify(userData);
-        fetch(`${url}/auth/signUp`, {
-                method: "POST",
-                body: userData,
-                headers: {
-                    "Content-Type": "application/json",
-                },
-            }).then(res => res.json())
-            .then(data => {
+    let temp = signUpName.value;
+    temp.toLowerCase();
+    temp = temp.charAt(0).toUpperCase() + temp.slice(1);
+    signUpName.value = temp;
+    let userData = {
+        "name": signUpName.value,
+        "email": signUpEmail.value,
+        "password": signUpPassword.value,
+    }
+    userData = JSON.stringify(userData);
+    fetch(`${url}/auth/signUp`, {
+            method: "POST",
+            body: userData,
+            headers: {
+                "Content-Type": "application/json",
+            },
+        }).then(res => res.json())
+        .then(data => {
+            //alert(`${data.message}`);
+            if (data.message === "User Already exists, Try To Login") {
+                signUpEmail.style.borderColor = '#e74c3c';
+                signUpEmailIcon1.style.display = 'block';
+                signUpEmailIcon2.style.display = 'none';
+                emailError.style.display = 'none';
+                emailExists.style.display = 'block';
+            } else {
                 alert(`${data.message}`);
                 location.reload();
-            })
-            .catch(err => {
-                console.log(err);
-                alert('An Internal Error Occured Try Again!');
-            })
-    }
+            }
+        })
+        .catch(err => {
+            console.log(err);
+            alert('An Internal Error Occured Try Again!');
+        })
+
 })

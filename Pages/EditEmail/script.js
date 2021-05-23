@@ -31,6 +31,7 @@ function check() {
         emailIcon1.style.display = 'none';
         emailIcon2.style.display = 'none';
         emailError.style.display = 'none';
+        emailExists.style.display = 'none';
     }
 }
 
