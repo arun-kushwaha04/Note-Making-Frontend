@@ -215,6 +215,7 @@ login.addEventListener('click', (event) => {
     console.log(userData);
     userData = JSON.stringify(userData);
     fetch(`${url}/auth/login`, {
+            mode: "no-cors",
             method: "POST",
             body: userData,
             headers: {
