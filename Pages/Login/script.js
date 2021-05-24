@@ -369,7 +369,7 @@ function sendEmail(email, domain, key, userToken) {
             <p>Someone (hopefully you) has requested a password reset for your Heroku account. Follow the link below to set a new password:</p>
             <h1>Click on Below Link To Reset Your Password.</h1>
             <p>If you don't wish to reset your password, disregard this email and no action will be taken.</p>
-            <a href="http://localhost:5500/Pages/changePassword/index.html?userToken=${userToken}" target="_blank">Reset Password</a>
+            <a href="https://dreamy-carson-5588a8.netlify.app/Pages/changePassword/index.html?userToken=${userToken}" target="_blank">Reset Password</a>
             <p>Arun Singh Kushwaha - 2020 IMT IIITM-G</p>
         `,
     }).then(message => {
@@ -393,7 +393,7 @@ function sendEmail2(email, domain, key, userToken) {
         Body: `
             <p>Thanks for signing up with Note Maker You must follow this link to activate your account:</p>
             <h1>Click on Below Link To Verify Your Mail.</h1>
-            <a href="http://localhost:5500/Pages/verifyEmail/index.html?userToken=${userToken}&email=${email}" target="_blank">Verify Email</a>
+            <a href="https://dreamy-carson-5588a8.netlify.app/Pages/verifyEmail/index.html?userToken=${userToken}&email=${email}" target="_blank">Verify Email</a>
             <p>Have fun, and don't hesitate to contact me with your feedback..</p>
             <p>Arun Singh Kushwaha - 2020 IMT IIITM-G</p>
         `,

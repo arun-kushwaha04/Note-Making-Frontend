@@ -5,8 +5,8 @@ const userToken = currUrl.get("userToken");
 const email = currUrl.get("email");
 
 
-// const url = "https://evening-earth-85816.herokuapp.com";
-const url = "http://localhost:8000";
+const url = "https://evening-earth-85816.herokuapp.com";
+// const url = "http://localhost:8000";
 window.addEventListener('load', () => {
     let userData = {
         "email": email

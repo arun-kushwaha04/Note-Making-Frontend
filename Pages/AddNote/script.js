@@ -2,8 +2,8 @@ const noteHeading = document.querySelector(".heading");
 const noteContent = document.querySelector(".content");
 const button = document.querySelector(".add-note");
 
-const url = "http://localhost:8000";
-
+// const url = "http://localhost:8000";
+const url = "https://evening-earth-85816.herokuapp.com";
 // Adding Note To Database
 button.addEventListener("click", () => {
     if (noteHeading.value === "" || noteContent.value === "") {

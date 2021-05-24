@@ -45,8 +45,8 @@ function check2() {
     }
 }
 
-const url = "http://localhost:8000";
-
+// const url = "http://localhost:8000";
+const url = "https://evening-earth-85816.herokuapp.com";
 button.addEventListener('click', () => {
     console.log("Hi");
     if (email.value === "") {

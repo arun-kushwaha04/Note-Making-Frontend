@@ -73,8 +73,8 @@ function check3() {
         button.style.display = 'block';
     }
 }
-const url = "http://localhost:8000";
-
+// const url = "http://localhost:8000";
+const url = "https://evening-earth-85816.herokuapp.com";
 button.addEventListener('click', () => {
     let data = {
         "password": `${newPassword.value}`,
@@ -99,7 +99,7 @@ button.addEventListener('click', () => {
             return;
         } else {
             alert(data.message);
-            location.replace("http://127.0.0.1:5500/index.html");
+            location.replace("https://dreamy-carson-5588a8.netlify.app/index.html");
         }
 
     }).catch(err => {

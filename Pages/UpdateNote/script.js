@@ -2,7 +2,8 @@ const noteHeading = document.querySelector(".heading");
 const noteContent = document.querySelector(".content");
 const button = document.querySelector(".add-note");
 
-const url = "http://localhost:8000";
+// const url = "http://localhost:8000";
+const url = "https://evening-earth-85816.herokuapp.com";
 const currUrl = new URLSearchParams(window.location.search);
 const id = currUrl.get("noteId");
 

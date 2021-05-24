@@ -7,8 +7,8 @@ const userName = document.querySelector('.name');
 const userEmail = document.querySelector('.email');
 const userNotes = document.querySelector('.notes');
 
-const url = "http://localhost:8000";
-
+// const url = "http://localhost:8000";
+const url = "https://evening-earth-85816.herokuapp.com";
 fetch(`${url}/user/getUserData`, {
         method: "POST",
         headers: {

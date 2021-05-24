@@ -10,7 +10,8 @@ window.addEventListener('load', () => {
     }
 })
 
-const url = "http://localhost:8000";
+// const url = "http://localhost:8000";
+const url = "https://evening-earth-85816.herokuapp.com";
 const loading = document.querySelector('.loading');
 const text = document.querySelector('.text');
 const img = document.querySelector('img');
@@ -48,7 +49,7 @@ setTimeout(() => {
             img.src = "../../assets/error.png";
             img.style.width = "20rem";
             img.style.height = "20rem";
-            setTimeout(() => { location.reload(); }, 1000);
+            setTimeout(() => { location.reload(); }, 10000);
         })
 }, 5000);
 
