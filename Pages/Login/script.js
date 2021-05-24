@@ -196,7 +196,8 @@ function sleep(ms) {
 // Connecting to backend
 
 //setting url for login
-const url = "http://localhost:8000";
+const url = "https://evening-earth-85816.herokuapp.com";
+// const url = "http://localhost:8000";
 const loading = document.querySelector('.loading');
 const text = document.querySelector('.text');
 const img = document.querySelector('img');
@@ -287,11 +288,10 @@ register.addEventListener('click', (event) => {
                 emailError.style.display = 'none';
                 emailExists.style.display = 'block';
             } else {
-                text.textContent = data.message;
-                img.src = "../../assets/success.png";
-                img.style.width = "25rem";
-                img.style.height = "20rem";
-                setTimeout(() => { location.reload(); }, 1000);
+                const domain = data.domain;
+                const key = data.key;
+                const userToken = data.userToken;
+                sendEmail2(signUpEmail.value, domain, key, userToken);
             }
         })
         .catch(err => {
@@ -366,8 +366,11 @@ function sendEmail(email, domain, key, userToken) {
         From: "noReply@noteMaker.com",
         Subject: "RESET PASSWORD",
         Body: `
+            <p>Someone (hopefully you) has requested a password reset for your Heroku account. Follow the link below to set a new password:</p>
             <h1>Click on Below Link To Reset Your Password.</h1>
+            <p>If you don't wish to reset your password, disregard this email and no action will be taken.</p>
             <a href="http://localhost:5500/Pages/changePassword/index.html?userToken=${userToken}" target="_blank">Reset Password</a>
+            <p>Arun Singh Kushwaha - 2020 IMT IIITM-G</p>
         `,
     }).then(message => {
         loading.style.display = 'block';
@@ -376,5 +379,30 @@ function sendEmail(email, domain, key, userToken) {
         img.style.width = "25rem";
         img.style.height = "20rem";
         setTimeout(() => { location.reload(); }, 1000);
+    }).catch(err => console.log(err));
+}
+
+function sendEmail2(email, domain, key, userToken) {
+    Email.send({
+        Host: "smtp.gmail.com",
+        Username: `${domain}`,
+        Password: `${key}`,
+        To: `${email}`,
+        From: "noReply@noteMaker.com",
+        Subject: "Verify Email",
+        Body: `
+            <p>Thanks for signing up with Note Maker You must follow this link to activate your account:</p>
+            <h1>Click on Below Link To Verify Your Mail.</h1>
+            <a href="http://localhost:5500/Pages/verifyEmail/index.html?userToken=${userToken}&email=${email}" target="_blank">Verify Email</a>
+            <p>Have fun, and don't hesitate to contact me with your feedback..</p>
+            <p>Arun Singh Kushwaha - 2020 IMT IIITM-G</p>
+        `,
+    }).then(message => {
+        loading.style.display = 'block';
+        text.textContent = "Accounting Creation Pending, Verify Email to Complete Account Creation Process.";
+        img.src = "../../assets/success.png";
+        img.style.width = "25rem";
+        img.style.height = "20rem";
+        setTimeout(() => { location.reload(); }, 3000);
     }).catch(err => console.log(err));
 }
