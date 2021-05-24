@@ -45,9 +45,9 @@ setTimeout(() => {
         .catch(err => {
             console.log(err);
             text.textContent = 'Server Down';
-            img.src = "../../assets/error.webp";
-            img.style.width = "30rem";
-            img.style.height = "30rem";
+            img.src = "../../assets/error.png";
+            img.style.width = "20rem";
+            img.style.height = "20rem";
             setTimeout(() => { location.reload(); }, 1000);
         })
 }, 5000);

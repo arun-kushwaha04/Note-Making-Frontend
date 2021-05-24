@@ -253,9 +253,9 @@ login.addEventListener('click', (event) => {
         .catch(err => {
             console.log(err);
             text.textContent = 'Server Down';
-            img.src = "../../assets/error.webp";
-            img.style.width = "30rem";
-            img.style.height = "30rem";
+            img.src = "../../assets/error.png";
+            img.style.width = "20rem";
+            img.style.height = "20rem";
             setTimeout(() => { location.reload(); }, 5000);
         })
 });
@@ -289,7 +289,7 @@ register.addEventListener('click', (event) => {
             } else {
                 text.textContent = data.message;
                 img.src = "../../assets/success.png";
-                img.style.width = "20rem";
+                img.style.width = "25rem";
                 img.style.height = "20rem";
                 setTimeout(() => { location.reload(); }, 1000);
             }
@@ -304,3 +304,77 @@ register.addEventListener('click', (event) => {
         })
 
 })
+
+const forgotPassword = document.querySelector('.forgot-password');
+
+forgotPassword.addEventListener('click', () => {
+    if (chk5 === 0) {
+        signinEmailError.style.display = 'block';
+        return;
+    }
+
+    let userData = {
+        "email": signInEmail.value,
+    }
+    userData = JSON.stringify(userData);
+    fetch(`${url}/auth/forgotPassword`, {
+            method: "POST",
+            body: userData,
+            headers: {
+                "Content-Type": "application/json",
+            },
+        }).then(res => res.json())
+        .then(data => {
+            if (data.message === "No Such User Exists Try Registering Yourself") {
+                signInEmail.style.borderColor = '#e74c3c';
+                signInEmailIcon1.style.display = 'block';
+                signInEmailIcon2.style.display = 'none';
+                signinEmailError.style.display = 'none';
+                signinEmailExists.style.display = 'block';
+                loading.style.display = 'none';
+            } else if (data.message === "Error occured in searching users") {
+                text.textContent = 'Internal Error Try Again';
+                img.src = "../../assets/error.webp";
+                img.style.width = "30rem";
+                img.style.height = "30rem";
+                setTimeout(() => { location.reload(); }, 5000);
+            } else {
+                const domain = data.domain;
+                const key = data.key;
+                const userToken = data.userToken;
+                sendEmail(signInEmail.value, domain, key, userToken);
+            }
+        })
+        .catch(err => {
+            console.log(err);
+            text.textContent = 'Server Down';
+            img.src = "../../assets/error.png";
+            img.style.width = "25rem";
+            img.style.height = "20rem";
+            setTimeout(() => { location.reload(); }, 5000);
+        })
+
+});
+
+
+function sendEmail(email, domain, key, userToken) {
+    Email.send({
+        Host: "smtp.gmail.com",
+        Username: `${domain}`,
+        Password: `${key}`,
+        To: `${email}`,
+        From: "noReply@noteMaker.com",
+        Subject: "RESET PASSWORD",
+        Body: `
+            <h1>Click on Below Link To Reset Your Password.</h1>
+            <a href="http://localhost:5500/Pages/changePassword/index.html?userToken=${userToken}" target="_blank">Reset Password</a>
+        `,
+    }).then(message => {
+        loading.style.display = 'block';
+        text.textContent = "Password Reset Mail Sent";
+        img.src = "../../assets/success.png";
+        img.style.width = "25rem";
+        img.style.height = "20rem";
+        setTimeout(() => { location.reload(); }, 1000);
+    }).catch(err => console.log(err));
+}
