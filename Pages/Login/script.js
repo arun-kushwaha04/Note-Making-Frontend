@@ -1,7 +1,3 @@
-// window.addEventListener('unload', () => {
-//     global.location.href += "#";
-// })
-
 //Selecting all input tags 
 const signUpEmail = document.querySelector(".signup-email");
 const signUpPassword = document.querySelector(".signup-password")
@@ -39,7 +35,7 @@ const login = document.querySelector('.login');
 const register = document.querySelector('.register');
 
 
-//handling all error cases
+//checking wheter input field are filled correctly
 let reg = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
 let strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
 
@@ -188,32 +184,32 @@ function check6() {
     }
 }
 
-
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
-
 // Connecting to backend
 
-//setting url for login
+//setting url 
 const url = "https://evening-earth-85816.herokuapp.com";
 // const url = "http://localhost:8000";
+
+//selection of animation on connenting to servers
 const loading = document.querySelector('.loading');
 const text = document.querySelector('.text');
 const img = document.querySelector('img');
 
+//logining in users
 login.addEventListener('click', (event) => {
     if (chk5 === 0) {
         signinEmailError.style.display = 'block';
         return;
     }
     loading.style.display = 'block';
+    //defining user data
     let userData = {
         "email": signInEmail.value,
         "password": signInPassword.value,
     }
     console.log(userData);
     userData = JSON.stringify(userData);
+    //fetching the data
     fetch(`${url}/auth/login`, {
             // mode: "no-cors",
             method: "POST",
@@ -225,6 +221,7 @@ login.addEventListener('click', (event) => {
         }).then(res => res.json())
         .then(data => {
             if (data.message === "Invalid Password") {
+                //invalid password -> setting the erroe msg
                 signInPassword.style.borderColor = '#e74c3c';
                 signInPasswordIcon1.style.display = 'block';
                 signInPasswordIcon2.style.display = 'none';
@@ -232,6 +229,7 @@ login.addEventListener('click', (event) => {
                 signinPasswordIncorrect.style.display = 'block';
                 loading.style.display = 'none';
             } else if (data.message === "No Such User Exists Try Registering Yourself") {
+                //no user found -> setting the error message
                 signInEmail.style.borderColor = '#e74c3c';
                 signInEmailIcon1.style.display = 'block';
                 signInEmailIcon2.style.display = 'none';
@@ -239,6 +237,7 @@ login.addEventListener('click', (event) => {
                 signinEmailExists.style.display = 'block';
                 loading.style.display = 'none';
             } else if (data.userToken) {
+                //if we get token from server than storing it in localstorage
                 localStorage.setItem("userToken", data.userToken);
                 text.textContent = data.message;
                 img.src = "../../assets/success.png";
@@ -246,7 +245,7 @@ login.addEventListener('click', (event) => {
                 img.style.height = "20rem";
                 setTimeout(() => { location.replace(`${data.dashboardUrl}`); }, 1000);
             } else {
-
+                //if no token displaying error
                 text.textContent = 'Internal Error Try Again';
                 img.src = "../../assets/error.webp";
                 img.style.width = "30rem";
@@ -256,8 +255,9 @@ login.addEventListener('click', (event) => {
             console.log(data.message);
         })
         .catch(err => {
+            //if any error occured showing error to user
             console.log(err);
-            text.textContent = 'Server Down';
+            text.textContent = `Can't Connect To Server`;
             img.src = "../../assets/error.png";
             img.style.width = "20rem";
             img.style.height = "20rem";
@@ -266,16 +266,25 @@ login.addEventListener('click', (event) => {
 });
 
 register.addEventListener('click', (event) => {
+    //Shoeing animation to users
+    text.textContent = 'Verifying Email';
+    loading.style.display = 'block';
+
+    //converting name to captial
     let temp = signUpName.value;
     temp.toLowerCase();
     temp = temp.charAt(0).toUpperCase() + temp.slice(1);
     signUpName.value = temp;
+
+    //creatimg user data to send to server
     let userData = {
         "name": signUpName.value,
         "email": signUpEmail.value,
         "password": signUpPassword.value,
     }
     userData = JSON.stringify(userData);
+
+    //fetching url
     fetch(`${url}/auth/signUp`, {
             method: "POST",
             body: userData,
@@ -284,14 +293,15 @@ register.addEventListener('click', (event) => {
             },
         }).then(res => res.json())
         .then(data => {
-            //alert(`${data.message}`);
             if (data.message === "User Already exists, Try To Login") {
+                //if user already exists sending error to display
                 signUpEmail.style.borderColor = '#e74c3c';
                 signUpEmailIcon1.style.display = 'block';
                 signUpEmailIcon2.style.display = 'none';
                 emailError.style.display = 'none';
                 emailExists.style.display = 'block';
             } else {
+                //if not then prepearing to send mail for verify email
                 const domain = data.domain;
                 const key = data.key;
                 const userToken = data.userToken;
@@ -299,8 +309,9 @@ register.addEventListener('click', (event) => {
             }
         })
         .catch(err => {
+            //if occured showing it to users
             console.log(err);
-            text.textContent = 'Server Down';
+            text.textContent = `Can't Connect To Server`;
             img.src = "../../assets/error.webp";
             img.style.width = "30rem";
             img.style.height = "30rem";
@@ -309,6 +320,7 @@ register.addEventListener('click', (event) => {
 
 })
 
+//slecting forgot password button
 const forgotPassword = document.querySelector('.forgot-password');
 
 forgotPassword.addEventListener('click', () => {
@@ -317,10 +329,17 @@ forgotPassword.addEventListener('click', () => {
         return;
     }
 
+    //if email is filled shoeing aniamtion to users
+    text.textContent = 'Sending A Password Reset Email';
+    loading.style.display = 'block';
+
+    //creating user data to send in backend
     let userData = {
         "email": signInEmail.value,
     }
     userData = JSON.stringify(userData);
+
+    //fetching url
     fetch(`${url}/auth/forgotPassword`, {
             method: "POST",
             body: userData,
@@ -330,6 +349,7 @@ forgotPassword.addEventListener('click', () => {
         }).then(res => res.json())
         .then(data => {
             if (data.message === "No Such User Exists Try Registering Yourself") {
+                //if no user exists with such email id showing error
                 signInEmail.style.borderColor = '#e74c3c';
                 signInEmailIcon1.style.display = 'block';
                 signInEmailIcon2.style.display = 'none';
@@ -337,12 +357,14 @@ forgotPassword.addEventListener('click', () => {
                 signinEmailExists.style.display = 'block';
                 loading.style.display = 'none';
             } else if (data.message === "Error occured in searching users") {
+                //if some database error occured showing an error
                 text.textContent = 'Internal Error Try Again';
                 img.src = "../../assets/error.webp";
                 img.style.width = "30rem";
                 img.style.height = "30rem";
                 setTimeout(() => { location.reload(); }, 5000);
             } else {
+                //preparing to send an resetPassword email
                 const domain = data.domain;
                 const key = data.key;
                 const userToken = data.userToken;
@@ -350,8 +372,9 @@ forgotPassword.addEventListener('click', () => {
             }
         })
         .catch(err => {
+            //if any error occured showing it to the user
             console.log(err);
-            text.textContent = 'Server Down';
+            text.textContent = `Can't Connect To Server`;
             img.src = "../../assets/error.png";
             img.style.width = "25rem";
             img.style.height = "20rem";
@@ -360,7 +383,7 @@ forgotPassword.addEventListener('click', () => {
 
 });
 
-
+//SMTP structure for forgotPassword email
 function sendEmail(email, domain, key, userToken) {
     Email.send({
         Host: "smtp.gmail.com",
@@ -386,6 +409,7 @@ function sendEmail(email, domain, key, userToken) {
     }).catch(err => console.log(err));
 }
 
+//SMTP structure for verifyuser email
 function sendEmail2(email, domain, key, userToken) {
     Email.send({
         Host: "smtp.gmail.com",

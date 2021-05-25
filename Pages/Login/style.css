@@ -7,32 +7,13 @@
 }
 
 body {
-    font-size: 62.5%;
-    height: 100vh;
+    font-size: 10px;
+    min-height: 100vh;
     background: linear-gradient(45deg, #ff9ce3, #4ab3ff);
     overflow: hidden;
+    display: flex;
+    align-items: center;
 }
-
-
-/* #signUpNameHint {
-    visibility: visible;
-}
-
-#signUpEmailHint {
-    visibility: visible;
-}
-
-#signUpPasswordHint {
-    visibility: visible;
-}
-
-#signInEmailHint {
-    visibility: visible;
-}
-
-#signInPasswordHint {
-    visibility: visible;
-} */
 
 .contaniner {
     height: 100%;
@@ -40,6 +21,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-around;
+    margin: auto;
 }
 
 .signUp,
@@ -82,7 +64,7 @@ body {
     border: 1px solid lightgray;
     border-radius: 0.5em;
     padding-left: 1rem;
-    font-size: 1.3rem;
+    font-size: 1rem;
     outline: none;
     /* text-align: center; */
 }
@@ -213,6 +195,11 @@ body {
     bottom: -2.5rem;
 }
 
+.circle1,
+.circle2 {
+    display: none;
+}
+
 .loading {
     position: absolute;
     top: 0;
@@ -249,4 +236,93 @@ body {
     font-size: 1rem;
     margin: 2rem 0 1rem 0;
     cursor: pointer;
+}
+
+
+/* media queries */
+
+@media (max-width:500px) {
+    body {
+        font-size: 5px;
+        overflow-y: auto;
+    }
+    .contaniner {
+        flex-direction: column;
+        justify-content: space-around;
+        padding: 2rem 2rem;
+        position: relative;
+        overflow: hidden;
+    }
+    .signUp,
+    .signIn {
+        width: 100%;
+        margin: 0 0 1rem 0;
+    }
+    .circle1,
+    .circle2 {
+        display: none;
+    }
+    .loading {
+        overflow-y: auto;
+    }
+    .loading img {
+        height: 30rem;
+        width: 30rem;
+    }
+    .loading .text {
+        margin-top: 10rem;
+    }
+}
+
+@media (min-width:500px) and (max-width:768px) {
+    body {
+        font-size: 5px;
+        overflow-y: auto;
+    }
+    .contaniner {
+        flex-direction: column;
+        justify-content: space-around;
+        padding: 2rem 4rem;
+        position: relative;
+        overflow: hidden;
+    }
+    .signUp,
+    .signIn {
+        width: 100%;
+        margin: 0 0 2rem 0;
+    }
+    .circle1,
+    .circle2 {
+        display: none;
+    }
+    .loading .text {
+        margin-top: 10rem;
+    }
+}
+
+@media (min-width:769px) and (max-width:1024px) {
+    body {
+        font-size: 5px;
+        overflow-y: auto;
+    }
+    .signUp {
+        width: 50%;
+    }
+    .signIn {
+        width: 40%;
+    }
+    .circle1,
+    .circle2 {
+        display: none;
+    }
+}
+
+@media (min-width:1025px) and (max-width:1200px) {
+    body {
+        font-size: 10px;
+    }
+    .circle1,
+    .circle2 {
+        display: none;
+    }
 }

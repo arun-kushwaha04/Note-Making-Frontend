@@ -87,6 +87,7 @@ main>div {
 
 .circle1,
 .circle2 {
+    display: none;
     position: absolute;
     z-index: -1;
 }
@@ -111,4 +112,101 @@ main>div {
     filter: blur(0.5rem);
     right: -5rem;
     bottom: -2.5rem;
+}
+
+
+/* media queries */
+
+@media (max-width:500px) {
+    body {
+        font-size: 5px;
+    }
+    h1 {
+        font-size: 2rem;
+    }
+    h3 {
+        font-size: 1rem;
+    }
+    nav {
+        padding: 1em;
+    }
+    main {
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        position: relative;
+    }
+    .left-div {
+        text-align: center;
+        width: 100%;
+    }
+    .right-div {
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+    .circle2 {
+        display: none;
+        height: 10rem;
+        width: 10rem;
+    }
+    .circle1 {
+        height: 25rem;
+        width: 25rem;
+    }
+}
+
+@media (min-width:500px) and (max-width:768px) {
+    body {
+        font-size: 7px;
+        overflow-y: auto;
+        min-height: 100vw;
+        max-height: 100vh;
+    }
+    nav {
+        padding: 2em;
+    }
+    main {
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        position: relative;
+        min-height: 90vw;
+        max-height: 90vh;
+    }
+    .left-div {
+        text-align: center;
+        width: 100%;
+    }
+    .right-div {
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+    .circle2 {
+        display: none;
+        height: 10rem;
+        width: 10rem;
+    }
+    .circle1 {
+        height: 30rem;
+        width: 30rem;
+    }
+}
+
+@media (min-width:769px) and (max-width:1024px) {
+    body {
+        font-size: 8px;
+    }
+    .circle2 {
+        display: none;
+        height: 10rem;
+        width: 10rem;
+    }
+}
+
+@media (min-width:1025px) and (max-width:1200px) {
+    body {
+        font-size: 9px;
+    }
 }
