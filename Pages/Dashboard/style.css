@@ -54,10 +54,11 @@ nav .heading {
     grid-column-gap: 5em;
     grid-row-gap: 2.5em;
     justify-content: center;
-    display: none;
+    visibility: hidden;
 }
 
 .card {
+    /* display: inline-block; */
     height: 30em;
     width: 25em;
     background-color: rgba(255, 251, 251, 0.267);
@@ -65,7 +66,7 @@ nav .heading {
     padding: 2em 1.5em;
 }
 
-.main-container .header {
+.main-container .card .header {
     height: 10%;
     display: flex;
     justify-content: space-between;

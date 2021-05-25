@@ -35,12 +35,12 @@ setTimeout(() => {
                 card.classList.add('noCard');
                 card.innerHTML = ` <img src = '../../assets/sad.svg' style = 'width:20em;'> <p style = 'font-size:3rem'> No Notes To Display </p>`;
                 main.appendChild(card);
-                mainContainer.style.display = 'block';
                 loading.style.display = 'none';
+                mainContainer.style.visibility = 'visible';
             } else {
                 data.notes.forEach(createNoteElement);
-                mainContainer.style.display = 'block';
                 loading.style.display = 'none';
+                mainContainer.style.visibility = 'visible';
             }
         })
         .catch(err => {
@@ -51,7 +51,7 @@ setTimeout(() => {
             img.style.height = "20rem";
             setTimeout(() => { location.reload(); }, 10000);
         })
-}, 5000);
+}, 1000);
 
 
 function createNoteElement(note) {
