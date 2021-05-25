@@ -276,7 +276,7 @@ body {
 
 @media (min-width:500px) and (max-width:768px) {
     body {
-        font-size: 5px;
+        font-size: 6px;
         overflow-y: auto;
     }
     .contaniner {
@@ -302,7 +302,7 @@ body {
 
 @media (min-width:769px) and (max-width:1024px) {
     body {
-        font-size: 5px;
+        font-size: 7px;
         overflow-y: auto;
     }
     .signUp {
@@ -319,7 +319,7 @@ body {
 
 @media (min-width:1025px) and (max-width:1200px) {
     body {
-        font-size: 10px;
+        font-size: 9px;
     }
     .circle1,
     .circle2 {

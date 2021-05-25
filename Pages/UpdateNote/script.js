@@ -1,5 +1,9 @@
 const noteHeading = document.querySelector(".heading");
 const noteContent = document.querySelector(".content");
+const main = document.querySelector("main");
+const body = document.querySelector("body");
+const container = document.querySelector(".container");
+const heading = document.querySelector('.heading');
 const button = document.querySelector(".add-note");
 
 // const url = "http://localhost:8000";
@@ -36,6 +40,9 @@ button.addEventListener("click", () => {
     } else if (noteContent.value.length > 100) {
         alert("Note content can't be more than 100");
     } else {
+        main.style.visibility = 'hidden';
+        body.style.background = 'lightgrey';
+        container.style.display = 'block';
         let data = {
             id,
             noteHeading: noteHeading.value,
@@ -52,9 +59,9 @@ button.addEventListener("click", () => {
             }).then(res =>
                 res.json())
             .then(data => {
-                location.href = "../Dashboard/index.html";
-                alert(data.message);
+                heading.innerHTML = "Note Updated";
+                setTimeout(() => { location.href = "../Dashboard/index.html"; }, 5000);
             })
-            .catch(err => console.log(err))
+            .catch(err => { heading.textContent = "Can't Connect To Server"; })
     }
 });

@@ -27,6 +27,7 @@ nav {
     justify-content: space-around;
     align-items: center;
     padding: 5em;
+    visibility: hidden;
 }
 
 nav .nav-options div {
@@ -158,13 +159,13 @@ nav .profile:hover {
 
 .loading {
     position: absolute;
-    top: 20%;
+    top: 0%;
     left: 0;
     right: 0;
     bottom: 0;
     height: 100%;
     width: 100%;
-    background-color: transparent;
+    background-color: #4ab3ff;
 }
 
 .loading img {
@@ -181,4 +182,136 @@ nav .profile:hover {
     font-size: 2.5rem;
     font-weight: 600;
     color: white;
+}
+
+
+/* media queries */
+
+@media (max-width:500px) {
+    body {
+        font-size: 5px;
+    }
+    nav {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 2rem;
+        width: 100%;
+    }
+    nav .heading {
+        font-size: 2rem;
+    }
+    nav .nav-options div {
+        font-size: 1rem;
+        margin: 0.1em;
+    }
+    nav .nav-options {
+        margin: 0.5rem 0 2rem 0;
+    }
+    .card {
+        height: 42em;
+        width: 30em;
+    }
+    .main-container .card .header {
+        height: 15%;
+    }
+    .heading {
+        font-size: 0.9rem;
+    }
+    .img-div {
+        height: 4em;
+        width: 8em;
+    }
+    .content {
+        height: 75%;
+        font-size: 0.8rem;
+        padding: 0.5em;
+    }
+    .text {
+        font-size: 2rem;
+    }
+    .loading img {
+        height: 20rem;
+        width: 20rem;
+    }
+}
+
+@media (min-width:500px) and (max-width:768px) {
+    body {
+        font-size: 6px;
+    }
+    nav {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 2rem;
+    }
+    main {
+        text-align: center;
+        padding: 1rem;
+    }
+    .main-container {
+        padding: 5rem 1rem;
+        grid-template-columns: repeat(auto-fill, minmax(25em, 1fr));
+    }
+    .card {
+        height: 40em;
+        width: 30em;
+    }
+    .main-container .card .header {
+        height: 18%;
+    }
+    .content {
+        height: 72%;
+    }
+    .text {
+        height: 10%;
+        font-size: 3rem;
+    }
+    .loading img {
+        height: 15rem;
+        width: 15rem;
+        height: 90%;
+    }
+}
+
+@media (min-width:769px) and (max-width:1024px) {
+    body {
+        font-size: 7px;
+    }
+    nav {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 2rem;
+    }
+    .main-container {
+        margin: 1rem;
+    }
+    .card {
+        /* display: inline-block; */
+        height: 40em;
+        width: 30em;
+    }
+    .main-container .card .header {
+        height: 18%;
+    }
+    .content {
+        height: 72%;
+    }
+    .text {
+        height: 10%;
+        font-size: 2rem;
+    }
+    .loading img {
+        height: 15rem;
+        width: 15rem;
+        height: 90%;
+    }
+}
+
+@media (min-width:1025px) and (max-width:1200px) {
+    body {
+        font-size: 9px;
+    }
 }

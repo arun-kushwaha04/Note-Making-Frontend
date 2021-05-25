@@ -1,6 +1,7 @@
 const mainContainer = document.querySelector('.main-container');
 const heading = document.querySelector('.heading');
 const main = document.querySelector('main');
+const nav = document.querySelector('nav');
 let body = document.querySelector('body');
 window.addEventListener('load', () => {
     body.classList.add('visible');
@@ -36,11 +37,13 @@ setTimeout(() => {
                 card.innerHTML = ` <img src = '../../assets/sad.svg' style = 'width:20em;'> <p style = 'font-size:3rem'> No Notes To Display </p>`;
                 main.appendChild(card);
                 loading.style.display = 'none';
+                nav.style.visibility = 'visible';
                 mainContainer.style.visibility = 'visible';
             } else {
                 data.notes.forEach(createNoteElement);
                 loading.style.display = 'none';
                 mainContainer.style.visibility = 'visible';
+                nav.style.visibility = 'visible';
             }
         })
         .catch(err => {

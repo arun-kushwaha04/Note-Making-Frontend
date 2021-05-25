@@ -405,7 +405,7 @@ function sendEmail(email, domain, key, userToken) {
         img.src = "../../assets/success.png";
         img.style.width = "25rem";
         img.style.height = "20rem";
-        setTimeout(() => { location.reload(); }, 1000);
+        setTimeout(() => { location.reload(); }, 5000);
     }).catch(err => console.log(err));
 }
 
@@ -431,6 +431,6 @@ function sendEmail2(email, domain, key, userToken) {
         img.src = "../../assets/success.png";
         img.style.width = "25rem";
         img.style.height = "20rem";
-        setTimeout(() => { location.reload(); }, 3000);
+        setTimeout(() => { location.reload(); }, 5000);
     }).catch(err => console.log(err));
 }

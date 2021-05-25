@@ -12,6 +12,8 @@ body {
     background: linear-gradient(45deg, #ff9ce3, #4ab3ff);
     font-size: 10px;
     overflow: hidden;
+    display: grid;
+    place-items: center;
 }
 
 main {
@@ -91,8 +93,36 @@ main {
     transform: scale(1.1);
 }
 
+.container {
+    text-align: center;
+    background-color: #fff;
+    height: 40%;
+    padding: 1.4em;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+    width: 20rem;
+    margin: 0 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.container .heading {
+    color: black;
+    font-size: 2rem;
+    font-weight: 600;
+    padding: 0.5em;
+    margin: 0 3rem;
+    line-height: 3.3rem;
+}
+
 .circle1,
 .circle2 {
+    display: none;
     position: absolute;
     z-index: -1;
 }

@@ -102,3 +102,44 @@ main {
 a {
     text-decoration: none;
 }
+
+
+/* media queries */
+
+@media (max-width:500px) {
+    body {
+        font-size: 5px;
+    }
+    .edit {
+        height: 3em;
+        width: 3em;
+    }
+    .heading,
+    .value {
+        font-size: 0.8rem;
+        margin: 0em;
+    }
+}
+
+@media (min-width:500px) and (max-width:768px) {
+    html {
+        font-size: 12px;
+    }
+    .heading,
+    .value {
+        font-size: 1rem;
+        margin: 0.1em;
+    }
+}
+
+@media (min-width:769px) and (max-width:1024px) {
+    body {
+        font-size: 8px;
+    }
+}
+
+@media (min-width:1025px) and (max-width:1200px) {
+    body {
+        font-size: 9px;
+    }
+}
