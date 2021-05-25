@@ -300,6 +300,7 @@ register.addEventListener('click', (event) => {
                 signUpEmailIcon2.style.display = 'none';
                 emailError.style.display = 'none';
                 emailExists.style.display = 'block';
+                loading.style.display = 'none';
             } else {
                 //if not then prepearing to send mail for verify email
                 const domain = data.domain;
@@ -400,6 +401,7 @@ function sendEmail(email, domain, key, userToken) {
             <p>Arun Singh Kushwaha - 2020 IMT IIITM-G</p>
         `,
     }).then(message => {
+        console.log(message);
         loading.style.display = 'block';
         text.textContent = "Password Reset Mail Sent";
         img.src = "../../assets/success.png";
