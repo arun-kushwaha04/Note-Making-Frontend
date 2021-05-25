@@ -215,11 +215,12 @@ login.addEventListener('click', (event) => {
     console.log(userData);
     userData = JSON.stringify(userData);
     fetch(`${url}/auth/login`, {
-            mode: "no-cors",
+            // mode: "no-cors",
             method: "POST",
             body: userData,
             headers: {
                 "Content-Type": "application/json",
+                // "mode": "no-cors",
             },
         }).then(res => res.json())
         .then(data => {
@@ -241,16 +242,18 @@ login.addEventListener('click', (event) => {
                 localStorage.setItem("userToken", data.userToken);
                 text.textContent = data.message;
                 img.src = "../../assets/success.png";
-                img.style.width = "20rem";
+                img.style.width = "25rem";
                 img.style.height = "20rem";
                 setTimeout(() => { location.replace(`${data.dashboardUrl}`); }, 1000);
             } else {
+
                 text.textContent = 'Internal Error Try Again';
                 img.src = "../../assets/error.webp";
                 img.style.width = "30rem";
                 img.style.height = "30rem";
                 setTimeout(() => { location.reload(); }, 5000);
             }
+            console.log(data.message);
         })
         .catch(err => {
             console.log(err);
@@ -258,7 +261,7 @@ login.addEventListener('click', (event) => {
             img.src = "../../assets/error.png";
             img.style.width = "20rem";
             img.style.height = "20rem";
-            setTimeout(() => { location.reload(); }, 5000);
+            setTimeout(() => { location.reload(); }, 10000);
         })
 });
 
