@@ -1,3 +1,4 @@
+//selecting all elements to be manipulated
 const email = document.querySelector('.email');
 const password = document.querySelector('.password');
 const emailIcon1 = document.querySelector('.email-icon1');
@@ -10,6 +11,7 @@ const passwordError = document.querySelector('.password-error');
 const enterPassword = document.querySelector('.error-text');
 const button = document.querySelector('.btn');
 
+//string to check valid email
 let reg = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
 
 function check() {
