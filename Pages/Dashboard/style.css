@@ -154,7 +154,7 @@ nav .profile:hover {
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    font: size 10rem;
+    font-size: 10rem;
 }
 
 .loading {
@@ -234,6 +234,12 @@ nav .profile:hover {
         height: 20rem;
         width: 20rem;
     }
+    .noCard {
+        font-size: 0.2rem;
+    }
+    /* .noCard .sadImg {
+        width: 5em;
+    } */
 }
 
 @media (min-width:500px) and (max-width:768px) {

@@ -390,11 +390,12 @@ function sendEmail(email, domain, key, userToken) {
         Host: "smtp.gmail.com",
         Username: `${domain}`,
         Password: `${key}`,
+        EnableSsl: true,
         To: `${email}`,
         From: "noReply@noteMaker.com",
         Subject: "RESET PASSWORD",
         Body: `
-            <p>Someone (hopefully you) has requested a password reset for your Heroku account. Follow the link below to set a new password:</p>
+            <p>Someone (hopefully you) has requested a password reset for your Note-Maker account. Follow the link below to set a new password:</p>
             <h1>Click on Below Link To Reset Your Password.</h1>
             <p>If you don't wish to reset your password, disregard this email and no action will be taken.</p>
             <a href="https://dreamy-carson-5588a8.netlify.app/Pages/changePassword/index.html?userToken=${userToken}" target="_blank">Reset Password</a>
@@ -402,13 +403,28 @@ function sendEmail(email, domain, key, userToken) {
         `,
     }).then(message => {
         console.log(message);
-        loading.style.display = 'block';
-        text.textContent = "Password Reset Mail Sent";
-        img.src = "../../assets/success.png";
-        img.style.width = "25rem";
+        if (message == 'OK') {
+            loading.style.display = 'block';
+            text.textContent = "Password Reset Mail Sent";
+            img.src = "../../assets/success.png";
+            img.style.width = "25rem";
+            img.style.height = "20rem";
+            setTimeout(() => { location.reload(); }, 5000);
+        } else {
+            text.textContent = `Can't Connect To Server`;
+            img.src = "../../assets/error.png";
+            img.style.width = "20rem";
+            img.style.height = "20rem";
+            setTimeout(() => { location.reload(); }, 10000);
+        }
+    }).catch(err => {
+        console.log(err);
+        text.textContent = `Can't Connect To Server`;
+        img.src = "../../assets/error.png";
+        img.style.width = "20rem";
         img.style.height = "20rem";
-        setTimeout(() => { location.reload(); }, 5000);
-    }).catch(err => console.log(err));
+        setTimeout(() => { location.reload(); }, 10000);
+    });
 }
 
 //SMTP structure for verifyuser email
@@ -430,9 +446,16 @@ function sendEmail2(email, domain, key, userToken) {
     }).then(message => {
         loading.style.display = 'block';
         text.textContent = "Accounting Creation Pending, Verify Email to Complete Account Creation Process.";
-        img.src = "../../assets/success.png";
+        img.style.display = 'none';
         img.style.width = "25rem";
         img.style.height = "20rem";
         setTimeout(() => { location.reload(); }, 5000);
-    }).catch(err => console.log(err));
+    }).catch(err => {
+        console.log(err);
+        text.textContent = `Can't Connect To Server`;
+        img.src = "../../assets/error.png";
+        img.style.width = "20rem";
+        img.style.height = "20rem";
+        setTimeout(() => { location.reload(); }, 10000);
+    });
 }
