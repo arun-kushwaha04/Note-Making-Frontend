@@ -34,7 +34,7 @@ setTimeout(() => {
             if (data.notes.length == 0) {
                 const card = document.createElement('div');
                 card.classList.add('noCard');
-                card.innerHTML = ` <img src = '../../assets/sad.svg' class="sadImg" style = 'width:20em;'> <p style = 'font-size:3rem'> No Notes To Display </p>`;
+                card.innerHTML = ` <p style = 'font-size:3rem'> No Notes To Display </p>`;
                 main.appendChild(card);
                 loading.style.display = 'none';
                 nav.style.visibility = 'visible';
