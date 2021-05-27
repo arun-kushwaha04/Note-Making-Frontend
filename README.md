@@ -1,7 +1,7 @@
 # Note-Making-Frontend
 
 I have created a nice note maker website. You can register yourself with your Email I'd. After registeration you will get a verification link to verify your Email.
-After verifing email your are all set to login with your account. If you forgot your password, don't worry just enter yuor email and click on forgot password, and a password email will be send to your email.
+After verifing email your are all set to login with your account. If you forgot your password, don't worry just enter your email and click on forgot password, and a password reset email will be send to your email.
 
 After signing in you can Create and add your note. In the user profile section you have various options to update your deatils .
 
