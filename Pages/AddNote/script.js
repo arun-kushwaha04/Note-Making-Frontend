@@ -5,6 +5,8 @@ const body = document.querySelector("body");
 const container = document.querySelector(".container");
 const heading = document.querySelector('.heading');
 const button = document.querySelector(".add-note");
+const circle1 = document.querySelector(".circle1");
+const circle2 = document.querySelector(".circle2");
 
 // const url = "http://localhost:8000";
 const url = "https://evening-earth-85816.herokuapp.com";
@@ -17,6 +19,8 @@ button.addEventListener("click", () => {
     } else if (noteContent.value.length > 100) {
         alert("Note content can't be more than 100");
     } else {
+        circle1.style.visibility = "hidden";
+        circle2.style.visibility = "hidden";
         main.style.visibility = 'hidden';
         body.style.background = 'lightgrey';
         container.style.display = 'block';
